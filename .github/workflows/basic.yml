@@ -49,14 +49,15 @@ jobs:
       id: vht
       with:
         ec2_instance_id: ${{ secrets.AWS_INSTANCE_ID }}
-        ec2_instance_type: t3.medium
+        ec2_instance_type: ${{ secrets.AWS_INSTANCE_TYPE }}
         ec2_security_group_id: ${{ secrets.AWS_EC2_SECURITY_GROUP_ID }}
         iam_profile: ${{ secrets.AWS_IAM_PROFILE }}
         s3_bucket_name: ${{ secrets.AWS_S3_BUCKET_NAME }}
-        ssh_key_name: common
+        ssh_key_name: ${{ secrets.AWS_SSH_KEY_NAME }}
         subnet_id: ${{ secrets.AWS_SUBNET_ID }}
-        terminate_ec2_instance: 'true'
-        vht_ami_version: '1.1.0'
+        terminate_ec2_instance: ${{ secrets.AWS_INSTANCE_TERMINATE }}
+        vht_ami_version: ${{ secrets.AWS_AMI_VERSION }}
+        vht_ami_id: ${{ secrets.AWS_AMI_ID }}
         vht_in: ./basic/
 
     - name: Fetch results from VHT
